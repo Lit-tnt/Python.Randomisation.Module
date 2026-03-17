@@ -1,1 +1,99 @@
+from time import *
+from random import *
+def P(a):
+    print(a, end='')
+    sleep(0.01)
+    
+def p(a):
+    if len(a) == 1:
+        print(a)
+    else:
+        for i in range(len(a)-1):
+            P(a[i])
+        p(a[len(a)-1])
 
+def s(a):
+    n = ''
+    for i in range(len(a)+8):
+        n += '='
+    p(n)
+    p('    '+a+'    ')
+    p(n)
+
+def I(a):
+    for i in range(len(a)-1):
+        P(a[i])
+    A = input('\n')
+    return A
+
+def N(a):
+    for i in range(len(a)-1):
+        P(a[i])
+    Q = input('\n')
+    try:
+        return int(Q)
+    except ValueError as e:
+        print('YOU ENCOUNTERED AN ERROR: '+str(e))
+        print('TRYING AGAIN...')
+        Z = N(a)
+        return Z
+
+while True:
+    while True:
+        s('PYTHON RANDOMI + {Z, S} + ATION THE SECOND ;)')
+        p('1. Generate a random number')
+        p('2. Flip a coin')
+        p('3. Roll a die')
+        p('4. Pick a random name')
+        p('5. Random time (12 HOUR)')
+        p('6. Random time (24 HOUR)')
+        p('7. Pick a random float')
+        p('8. Random playing card')
+        p('9. Random list of names')
+        p('10. Generate a humungous number in various bases')
+        p('11. Generate a random string of gibberish')
+        try:
+            ans = N('Input in the intiger of your choice.')
+        except ValueError:
+            p('You did not choose an intiger.')
+            p('RESTARTING COMPUTER...')
+            break
+        if ans == 1:
+            try:
+                a = N('Input the lowest number in the range.')
+                b = N('Input the highest number in the range.')
+                p('Your random number is: '+str(randint(a, b)))
+            except ValueError:
+                p('You did not input an intiger.')
+                p('RESTARTING COMPUTER...')
+                break
+        elif ans == 2:
+            if random() > 0.5:
+                p('11111111111111111')
+                p('10000000000000001')
+                p('10110000000001101')
+                p('10110000000001101')
+                p('10111111111111101')
+                p('10111111111111101')
+                p('10110000000001101')
+                p('10110000000001101')
+                p('10000000000000001')
+                p('11111111111111111')
+            else:
+                p('11111111111111111')
+                p('10000000000000001')
+                p('10111111111111101')
+                p('10000001110000001')
+                p('10000001110000001')
+                p('10000001110000001')
+                p('10000001110000001')
+                p('10000001110000001')
+                p('10000000000000001')
+                p('11111111111111111')
+        elif ans == 3:
+            p('rolling...')
+            p('Hold on... \nThis is quite a hard die to roll... \nmaybe we should get a new one?\ngoing to the shops...\nbuying a die that is easier to roll...\nrolling the new die...\nit landed on...\n')
+            n = str(uniform(0, 6))
+            p('IT WAS A' + n+'... wait a minute... rounding the result... It was actually a ' + str(round(float(n))+'!' ))
+        elif ans == 4:
+            print('FILLER TEXT')
