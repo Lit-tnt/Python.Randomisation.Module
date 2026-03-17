@@ -93,7 +93,86 @@ while True:
         elif ans == 3:
             p('rolling...')
             p('Hold on... \nThis is quite a hard die to roll... \nmaybe we should get a new one?\ngoing to the shops...\nbuying a die that is easier to roll...\nrolling the new die...\nit landed on...\n')
-            n = str(uniform(0, 6))
-            p('IT WAS A' + n+'... wait a minute... rounding the result... It was actually a ' + str(round(float(n))+'!' ))
+            n = uniform(0, 6)
+            rounded = round(n)
+            p('IT WAS A ' + f'{n:.2f}' + '... wait a minute... rounding the result... It was actually a ' + str(rounded) + '!')
         elif ans == 4:
-            print('FILLER TEXT')
+            namenum = N('How many names are there to choose from?')
+            names = []
+            names.append(I('Input a name.'))
+            for i in range(namenum-1):
+                names.append(I('Input another name.'))
+            p('The (lucky?) person is...... '+choice(names)+'!')
+        elif ans == 5:
+            hour = randint(1, 12)
+            minute = randint(0, 59)
+            if minute < 10:
+                minute = '0'+str(minute)
+            else:
+                minute = str(minute)
+            if random() > 0.5:
+                p('Your random 12h time is: '+str(hour)+':'+minute+' AM')
+            else:
+                p('Your random 12h time is: '+str(hour)+':'+minute+' PM')
+        elif ans == 6:
+            hour = randint(0, 23)
+            minute = randint(0, 59)
+            if minute < 10:
+                minute = '0'+str(minute)
+            else:
+                minute = str(minute)
+            if hour < 10:
+                hour = '0'+str(hour)
+            else:
+                hour = str(hour)
+            p('Your random 24h time is: '+hour+':'+minute)
+        elif ans == 7:
+            a = N('Input the lowest number in the range.')
+            b = N('Input the highest number in the range.')
+            n = uniform(a, b)
+            p('Your random float is: '+f'{n:.2f}')
+        elif ans == 8:
+            suits = ['♥','♦','♣','♠']
+            values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+
+            p('Your random playing card is: '+choice(values)+choice(suits))
+        elif ans == 9:
+            namenum = N('How many names are there to choose from?')
+            NAMENUM = N('How many names do you want to pick?')
+            names = []
+            names.append(I('Input a name.'))
+            for i in range(namenum-1):
+                names.append(I('Input another name.'))
+            shuffle(names)
+            p('The (lucky?) people are......')
+            for i in range(NAMENUM-1):
+                p(+names[i]+', ')
+            p('And last but not least, '+names[NAMENUM-1]+'!')
+        elif ans == 10:
+            baselistraw = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F']
+            duodecimallist = ['0','1','2','3','4','5','6','7','8','9','α','β']
+            base = N('Input the base you want the number to be in (2 - 16).')
+            if base < 2 or base > 16:
+                p('You did not input a valid base.')
+                p('RESTARTING COMPUTER...')
+                break
+            elif base == 12:
+                baselist = duodecimallist
+            else:
+                baselist = baselistraw[:base]
+            length = N('How many rows (each 20 digits long) do you want of numbers?')
+            p('Your humungous number is:')
+            for i in range(length):
+                n = ''
+                for j in range(20):
+                    n += choice(baselist)
+                p(n)
+        elif ans == 11:
+            length = N('How many rows (each 20 characters long) do you want of strings?')
+            chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+-=~`|\\:;\"\'<>,.?/ '
+            n = ''
+            for i in range(length):
+                n = ''
+                for j in range(20):
+                    n += choice(chars)
+                p(n)
